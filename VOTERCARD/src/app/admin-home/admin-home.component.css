@@ -1,0 +1,420 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 2rem;
+  height: 100vh;
+  grid-gap: 1em;
+  overflow: hidden;
+}
+.main .nav-bar {
+  padding: 1rem 2rem;
+  grid-row: 1/2;
+  grid-column: 1/4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.1),
+    15px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.brand span {
+  color: white;
+  font-size: 2.5rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+}
+
+.nav-links li,
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0px 26px;
+}
+
+.nav-links a {
+  color: #00525d;
+  font-family: var(--eb);
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  transition: all 0.6s ease 0s;
+}
+
+.nav-links a:hover {
+  text-shadow: 0 20px 25px black;
+}
+
+.nav-bar .profile-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-contents .photo_frame {
+  margin: 0rem 2rem;
+  height: 5vh;
+  width: 5vh;
+  border-radius: 50%;
+  background-image: url("../../assets/user-profile.png");
+  background-size: cover;
+}
+
+.profile-contents .profile_name {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.profile_show_box {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 35%;
+  left: 92%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-color: white;
+  height: 30vh;
+  width: 25vh;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.537);
+}
+
+.profile_show_box .btn {
+  /* background-color: #00525d; */
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.profile_show_box .btn i {
+  font-size: 2rem;
+}
+
+.main .side-bar {
+  padding: 1rem 0;
+  grid-column: 1/2;
+  grid-row: 2/7;
+  overflow-y: scroll;
+  overflow-x: visible;
+}
+
+.sidebar-content {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#cards {
+  margin: 1rem 0;
+  width: 45vh;
+  align-items: center;
+  padding: 5vh 5vh;
+  border-radius: 30px;
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.1),
+    15px 15px 15px rgba(0, 0, 0, 0.1);
+  transition: all 1s;
+}
+
+#cards span {
+  color: white;
+  color: #fdd037;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+}
+
+#cards:hover {
+  box-shadow: -20px -20px 20px 10px rgba(255, 255, 255, 0.1),
+    20px 40px 40px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main .content {
+  border-radius: 50px;
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.1),
+    15px 15px 15px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  padding: 2rem 2rem;
+  grid-column: 2/4;
+  grid-row: 2/7;
+  /* background-color: aqua; */
+}
+
+.add_voter {
+  width: 40vh;
+  min-height: 275px;
+  min-width: 475px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 4rem;
+  border-radius: 50px;
+  transition: 1s;
+}
+.add_candidate {
+  width: 40vh;
+  min-height: 275px;
+  min-width: 475px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 4rem;
+  border-radius: 50px;
+  transition: 1s;
+}
+
+.add_voter span {
+  color: #fdd037;
+  font-size: 4rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+  transition: filter 1s;
+}
+.add_candidate span {
+  color: #fdd037;
+  font-size: 4rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+  transition: filter 1s;
+}
+select {
+  height: 3rem;
+  width: 100%;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 8px 20px;
+  transition: all, 1s;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.candidate_list select {
+  width: 50%;
+  margin: 0 1rem;
+}
+/* option {
+  height: 3rem;
+  width: 80%;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 8px 20px;
+  transition: all, 1s;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+} */
+select::placeholder {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.418);
+}
+
+select:hover {
+  box-shadow: 0 45px 40px black;
+  transition: 1s;
+}
+
+select:focus {
+  box-shadow: 0 40px 40px black;
+}
+input {
+  height: 3rem;
+  width: 95%;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 8px 20px;
+  transition: all, 1s;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+input::placeholder {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.418);
+}
+
+input:hover {
+  box-shadow: 0 45px 40px black;
+  transition: 1s;
+}
+
+input:focus {
+  box-shadow: 0 40px 40px black;
+}
+
+button {
+  height: 3rem;
+  width: 30vh;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  color: #fdd037;
+  background-color: black;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 5px 10px black;
+  transition: box-shadow 1s;
+}
+
+button:hover {
+  box-shadow: 0 40px 40px black;
+}
+
+.voter_list span {
+  color: #fdd037;
+  font-size: 4rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+  transition: filter 1s;
+}
+.candidate_list span {
+  color: #fdd037;
+  font-size: 4rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+  transition: filter 1s;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 30px;
+  /* background-color: #00525d; */
+}
+
+table thead {
+  width: 100%;
+  overflow: hidden;
+}
+table tbody {
+  overflow: scroll;
+  width: 100%;
+}
+
+thead tr {
+  border-radius: 10px;
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.08),
+    15px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+tbody tr {
+  border-radius: 10px;
+  transition: all 0.3s;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.343);
+}
+
+tbody tr:hover {
+  border-radius: 10px;
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.08),
+    15px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  font-size: 1rem;
+  padding: 1rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+}
+td {
+  font-size: 12px;
+  padding: 1rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+}
+
+#box {
+  z-index: 1;
+  color: black;
+  padding: 3rem;
+  border-radius: 30px;
+  /* background-color: black; */
+  background-color: #fdd037;
+  /* background-color: white; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 30%;
+  box-shadow: 0 25px 35px rgba(0, 0, 0, 0.452);
+}
+
+#box span {
+  color: #fdd037;
+  /* color: black; */
+  font-size: 4rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  /* text-shadow: 0 7px 10px rgba(0, 0, 0, 0.452); */
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+  transition: filter 1s;
+}
+
+#box .btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.style {
+  filter: blur(10px);
+  pointer-events: none;
+}

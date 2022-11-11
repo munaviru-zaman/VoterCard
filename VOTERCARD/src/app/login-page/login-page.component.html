@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="login-box">
+    <span>Identify Yourself.</span>
+    <input
+      type="text"
+      class="college-name"
+      [(ngModel)]="admsn_no"
+      placeholder="Enter your admission number"
+    />
+    <input
+      type="password"
+      class="college-name"
+      [(ngModel)]="pswd"
+      placeholder="Enter your Password"
+    />
+    <div class="buttons">
+      <button class="reg-college" (click)="login()">Login</button>
+      <i (click)="admin()" class="fa-solid fa-user-tie"></i>
+    </div>
+  </div>
+</div>

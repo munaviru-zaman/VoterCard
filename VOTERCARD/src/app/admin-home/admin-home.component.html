@@ -1,0 +1,375 @@
+<div class="main" [ngClass]="box ? 'style' : ''">
+  <div class="nav-bar">
+    <div class="brand">
+      <span class="brand-name">VoterCard</span>
+    </div>
+    <!-- <nav>
+      <ul class="nav-links">
+        <li><a href="#" onclick="candidate()">Candidates</a></li>
+        <li><a href="#" onclick="addCandidate()">Add Candidates</a></li>
+        <li><a href="#">vote</a></li>
+        <li><a href="#">voter's list</a></li>
+        <li><a href="#">Result</a></li>
+      </ul>
+    </nav> -->
+    <div class="profile-contents" (click)="profile_box_show()">
+      <div class="photo_frame">
+        <!-- <img src="../../assets/user-profile.png" alt="" /> -->
+      </div>
+      <div class="profile_name">{{ admin_id }}</div>
+    </div>
+    <div class="profile_show_box" *ngIf="profile_box">
+      <div class="profile-contents" (click)="profile_box_show()">
+        <div class="photo_frame">
+          <!-- <img src="../../assets/user-profile.png" alt="" /> -->
+        </div>
+        <div class="profile_name">{{ admin_id }}</div>
+      </div>
+      <div class="btn">
+        <i class="fa-solid fa-right-from-bracket" (click)="adminlogout()"></i>
+        <i class="fa-solid fa-xmark" (click)="profile_box_close()"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="side-bar">
+    <div class="sidebar-content">
+      <div class="candidates" id="cards" (click)="showCandidates()">
+        <span>Candidates</span>
+      </div>
+
+      <div class="add-candidates" id="cards" (click)="showAddCandidates()">
+        <span>add candidates</span>
+      </div>
+
+      <div class="add-voter" id="cards" (click)="showAddVoters()">
+        <span>add voter</span>
+      </div>
+
+      <div class="voters-list" id="cards" (click)="showVoters()">
+        <span>voter's list</span>
+      </div>
+
+      <div class="result" id="cards" (click)="showResult()">
+        <span>results</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="add_voter" *ngIf="add_voters">
+      <span>Add Voter</span>
+      <div class="ad-no">
+        <input
+          type="text"
+          id="ad_no"
+          [(ngModel)]="admsn_no"
+          placeholder="Enter Admission number"
+        />
+      </div>
+      <div class="name">
+        <input
+          type="text"
+          id="c_name"
+          [(ngModel)]="name"
+          placeholder="Enter name"
+        />
+      </div>
+
+      <div class="batch">
+        <input
+          type="text"
+          id="ad_no"
+          [(ngModel)]="batch"
+          placeholder="Enter batch (eg:- 2019-22)"
+        />
+      </div>
+      <div class="dept">
+        <select Name="editdept" size="1" [(ngModel)]="dept">
+          <option>Select Department</option>
+          <option>BSC</option>
+          <option>BCA</option>
+          <option>BVOC</option>
+          <option>BA</option>
+          <option>BCOM</option>
+          <option>BBA</option>
+        </select>
+      </div>
+      <div class="add">
+        <button type="button" value="Add" id="add" (click)="adding_voter()">
+          ADD
+        </button>
+      </div>
+    </div>
+
+    <div class="add_candidate" *ngIf="add_candidates">
+      <span>Add Candidate</span>
+      <div class="ad-no">
+        <input
+          type="text"
+          id="ad_no"
+          [(ngModel)]="admsn_no"
+          placeholder="Enter Admission number"
+        />
+      </div>
+
+      <div class="name">
+        <input
+          type="text"
+          id="c_name"
+          [(ngModel)]="name"
+          placeholder="Enter name"
+        />
+      </div>
+
+      <div class="post">
+        <select
+          Name="post"
+          size="1"
+          [(ngModel)]="post"
+          aria-placeholder="Select post"
+        >
+          <option>Select post</option>
+          <option>Chairman</option>
+          <option>Vice Chairman</option>
+          <option>Student Editor</option>
+          <option>Association Secretay</option>
+        </select>
+      </div>
+
+      <div class="party">
+        <select
+          Name="party"
+          size="1"
+          [(ngModel)]="party"
+          aria-placeholder="Select party"
+        >
+          <option>Select party</option>
+          <option>MSF</option>
+          <option>SFI</option>
+          <option>ABVP</option>
+        </select>
+      </div>
+      <div class="add">
+        <button type="button" value="Add" id="add" (click)="adding_candidate()">
+          ADD
+        </button>
+      </div>
+    </div>
+
+    <div class="voter_list" *ngIf="show_voters">
+      <span>Voter List</span>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Admission No</th>
+            <th>Department</th>
+            <th>Batch</th>
+            <th>Voted</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of voterArray">
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.admsn_no }}</td>
+            <td>{{ item.dept }}</td>
+            <td>{{ item.batch }}</td>
+            <td>{{ item.vote_status }}</td>
+            <td>
+              <i
+                class="fa-solid fa-pen-to-square"
+                (click)="showVoterEditBox(item.admsn_no)"
+              ></i>
+            </td>
+            <td>
+              <i
+                class="fa-solid fa-trash-can"
+                (click)="showVoterDeleteBox(item.admsn_no)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="candidate_list" *ngIf="show_candidates">
+      <span>Candidate List</span>
+      <div>
+        <select
+          Name="post"
+          size="1"
+          [(ngModel)]="searchpost"
+          aria-placeholder="Select post"
+        >
+          <option>Select post</option>
+          <option>Chairman</option>
+          <option>Vice Chairman</option>
+          <option>Student Editor</option>
+          <option>Association Secretay</option>
+        </select>
+        <button (click)="searchCandidate()">Search</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>post</th>
+            <th>party</th>
+            <th>Icon</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of candidateArray">
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.post }}</td>
+            <td>{{ item.party }}</td>
+            <td>icon</td>
+            <td>
+              <i
+                class="fa-solid fa-pen-to-square"
+                (click)="showCandidateEditBox(item.admsn_no)"
+              ></i>
+            </td>
+            <td>
+              <i
+                class="fa-solid fa-trash-can"
+                (click)="showCandidateDeleteBox(item.admsn_no)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="result" *ngIf="show_result">
+      <span>Result</span>
+      <div>
+        <select
+          Name="post"
+          size="1"
+          [(ngModel)]="searchpost"
+          aria-placeholder="Select post"
+        >
+          <option>Select post</option>
+          <option>Chairman</option>
+          <option>Vice Chairman</option>
+          <option>Student Editor</option>
+          <option>Association Secretay</option>
+        </select>
+        <button (click)="searchWinner()">Check</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>post</th>
+            <th>party</th>
+            <th>Vote Count</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of winner">
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.post }}</td>
+            <td>{{ item.party }}</td>
+            <td>{{ item.vote_count }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <Button (click)="sendResult()">Submit</Button>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------voter------------------------------- -->
+
+<div class="Special" *ngIf="edit_voter_box" id="box">
+  <span>Edit Details</span>
+  <div class="candidateDetails">
+    <input type="text" id="ad_no" [(ngModel)]="editname" />
+
+    <input type="text" id="c_name" [(ngModel)]="editadmsn_no" />
+
+    <select Name="editdept" size="1" [(ngModel)]="editdept">
+      <option>BSC</option>
+      <option>BCA</option>
+      <option>BVOC</option>
+      <option>BA</option>
+      <option>BCOM</option>
+      <option>BBA</option>
+    </select>
+    <input Name="editbatch" [(ngModel)]="editbatch" />
+  </div>
+  <div class="btn">
+    <button (click)="editVoter()">Edit</button>
+    <button (click)="cancelvoteredit()">Cancel</button>
+  </div>
+</div>
+
+<div class="delete" *ngIf="delete_voter_box" id="box">
+  <span>Delete Details</span>
+  <div class="voterDetails">
+    <input type="text" [(ngModel)]="name" readonly />
+
+    <input type="text" [(ngModel)]="admsn_no" readonly />
+
+    <input type="text" [(ngModel)]="dept" readonly />
+    <input type="text" [(ngModel)]="batch" readonly />
+  </div>
+  <div class="btn">
+    <button (click)="deleteVoter()">Delete</button>
+    <button (click)="cancelvoterdelete()">Cancel</button>
+  </div>
+</div>
+
+<!-- ------------------------------------xxxxx--------------------------------------------------------- -->
+
+<!-- ---------------------------------------------candidate--------------------------------------------------- -->
+
+<div class="Special" *ngIf="edit_candidate_box" id="box">
+  <span>Edit Details</span>
+  <div class="candidateDetails">
+    <input type="text" id="ad_no" [(ngModel)]="name" readonly />
+
+    <input type="text" id="c_name" [(ngModel)]="admsn_no" readonly />
+
+    <select Name="editpost" size="1" [(ngModel)]="editpost">
+      <option>Chairman</option>
+      <option>Vice Chairman</option>
+      <option>Student Editor</option>
+      <option>Association Secretay</option>
+    </select>
+    <select Name="editparty" size="1" [(ngModel)]="editparty">
+      <option>MSF</option>
+      <option>SFI</option>
+      <option>ABVP</option>
+    </select>
+  </div>
+  <div class="btn">
+    <button (click)="editCandidate()">Edit</button>
+    <button (click)="cancelcandidateedit()">Cancel</button>
+  </div>
+</div>
+
+<div class="delete" *ngIf="delete_candidate_box" id="box">
+  <span>Delete Details</span>
+  <div class="candidateDetails">
+    <input type="text" id="ad_no" [(ngModel)]="name" readonly />
+
+    <input type="text" id="c_name" [(ngModel)]="admsn_no" readonly />
+
+    <input type="text" [(ngModel)]="post" readonly />
+    <input type="text" [(ngModel)]="party" readonly />
+  </div>
+  <div class="btn">
+    <button (click)="deleteCandidate()">Delete</button>
+    <button (click)="cancelcandidatedelete()">Cancel</button>
+  </div>
+</div>
+
+<!-- --------------------------------------------xxxxx------------------------------------------------- -->

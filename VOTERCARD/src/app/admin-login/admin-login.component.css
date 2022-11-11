@@ -1,0 +1,75 @@
+.login-box {
+  width: 32%;
+  min-height: 275px;
+  min-width: 475px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem;
+  border-radius: 50px;
+  /* background-color: rgba(255, 255, 255, 0.199); */
+  box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.1),
+    15px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+span {
+  color: #fdd037;
+  font-size: 4rem;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  /* text-shadow: 0 10px 20px; */
+  filter: drop-shadow(-3px -3px 2px rgba(255, 255, 255, 0.2))
+    drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3))
+    drop-shadow(15px 15px 15px rgba(0, 0, 0, 0.3));
+}
+
+input {
+  height: 3rem;
+  width: 90%;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 8px 20px;
+  transition: all 1s;
+}
+
+input::placeholder {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.418);
+}
+
+input:hover {
+  box-shadow: 0 40px 40px black;
+}
+
+input:focus {
+  box-shadow: 0 40px 40px black;
+}
+
+button {
+  height: 3rem;
+  width: 30vh;
+  margin: 1rem 0;
+  border: none;
+  outline: none;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  color: #fdd037;
+  background-color: black;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 5px 10px black;
+  transition: box-shadow, 1s;
+}
+
+button:hover {
+  box-shadow: 0 40px 40px black;
+  transition: 1s;
+}

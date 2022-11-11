@@ -1,0 +1,96 @@
+<div class="main" [ngClass]="showbox ? 'style' : ''">
+  <div class="nav-bar">
+    <div class="brand">
+      <span class="brand-name">VoterCard</span>
+    </div>
+    <div class="profile-contents" (click)="profile_box_show()">
+      <div class="photo_frame">
+        <!-- <img src="../../assets/user-profile.png" alt="" /> -->
+      </div>
+      <div class="profile_name">{{ admsn_no }}</div>
+    </div>
+    <div class="profile_show_box" *ngIf="profile_box">
+      <div class="profile-contents" (click)="profile_box_show()">
+        <div class="photo_frame">
+          <!-- <img src="../../assets/user-profile.png" alt="" /> -->
+        </div>
+        <div class="profile_name">{{ admsn_no }}</div>
+      </div>
+      <div class="btn">
+        <i class="fa-solid fa-right-from-bracket" (click)="logout()"></i>
+        <i class="fa-solid fa-xmark" (click)="profile_box_close()"></i>
+      </div>
+    </div>
+  </div>
+  <div class="body-contents">
+    <div class="cards">
+      <div class="post" (click)="voteChairman()">
+        <span class="chairman">Chairman</span>
+      </div>
+      <div class="post" (click)="voteVC()">
+        <span class="chairman">Vice Chair Person</span>
+      </div>
+      <div class="post" (click)="voteSE()">
+        <span class="chairman">Student Editor</span>
+      </div>
+      <div class="post" (click)="voteAC()">
+        <span class="chairman">Association Secretary</span>
+      </div>
+      <button class="result" (click)="showresult()" *ngIf="result_button">
+        Results
+      </button>
+    </div>
+  </div>
+</div>
+<div class="vote_panel" *ngIf="showbox">
+  <table class="votingTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Admission No</th>
+        <th>Party</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let candidate of candidatesArray">
+      <tr>
+        <td>{{ candidate.name }}</td>
+        <td>{{ candidate.admsn_no }}</td>
+        <td>{{ candidate.party }}</td>
+        <td>
+          <input
+            type="radio"
+            name="vote"
+            id=""
+            value="{{ candidate.admsn_no }}"
+            [(ngModel)]="vote_value"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="btn">
+    <button (click)="cancel()">Cancel</button>
+    <button (click)="vote()">Vote</button>
+  </div>
+</div>
+<div class="result_panel" *ngIf="show_result">
+  <span>Results</span>
+  <table class="resultTable">
+    <thead>
+      <tr>
+        <td>Post</td>
+        <th>Name</th>
+
+        <th>Party</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let result of resultArray">
+      <tr>
+        <td>{{ result.post }}</td>
+        <td>{{ result.name }}</td>
+        <td>{{ result.party }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <i class="fa-solid fa-xmark" (click)="closeResultBox()"></i>
+</div>
